@@ -663,6 +663,7 @@ class CropperPage extends Component<CropperPageProps, State> {
     if (this.isRectangleMoving) {
       return null;
     }
+    console.log("onDone FORM PACKAGE =======++++++")
 
     //this.setState({ isSaving: true });
     const IMAGE_W = this.props.COMPONENT_WIDTH - this.state.RIGHT_LIMIT - this.state.LEFT_LIMIT;
@@ -704,6 +705,7 @@ class CropperPage extends Component<CropperPageProps, State> {
         base64: false,
       }
     ).then(croppedUri => {
+      console.log("CROPPED URI FORM PACKAGE =======>", croppedUri)
       this.props.onDone(croppedUri.uri);
     }).catch((err: Error) => {
       this.props.onError(err);
