@@ -691,7 +691,6 @@ class CropperPage extends Component<CropperPageProps, State> {
     } as ImageCropData;
     await ImageManipulator.manipulateAsync(   //expo package
       this.props.imageUri, [
-      { rotate: this.state.rotation},
       { crop: {
         originX: cropData.offset.x,
         originY: cropData.offset.y,
