@@ -17,7 +17,7 @@ type CropperPageProps = {
   LEFT_VALUE: number;
   BOTTOM_VALUE: number;
   RIGHT_VALUE: number;
-  initialRotation: number;
+  // initialRotation: number;
   NOT_SELECTED_AREA_OPACITY: number;
   BORDER_WIDTH: number;
   COMPONENT_WIDTH: number;
@@ -78,7 +78,7 @@ interface State {
   LEFT_VALUE: number;
   BOTTOM_VALUE: number;
   RIGHT_VALUE: number;
-  rotation: number;
+  // rotation: number;
 }
 
 class CropperPage extends Component<CropperPageProps, State> {
@@ -90,7 +90,7 @@ class CropperPage extends Component<CropperPageProps, State> {
     const { TOP_LIMIT, LEFT_LIMIT, BOTTOM_LIMIT, RIGHT_LIMIT, DIFF } = getCropperLimits(
       imageWidth,
       imageHeight,
-      props.initialRotation,
+      // props.initialRotation,
       W_INT,
       H_INT,
       this.W,
@@ -180,7 +180,7 @@ class CropperPage extends Component<CropperPageProps, State> {
       LEFT_VALUE,
       BOTTOM_VALUE,
       RIGHT_VALUE,
-      rotation: props.initialRotation,
+      // rotation: props.initialRotation,
     };
   }
 
@@ -336,7 +336,7 @@ class CropperPage extends Component<CropperPageProps, State> {
       bottom: this.state.BOTTOM_LIMIT - DIFF,
       right: this.state.RIGHT_LIMIT + DIFF,
       resizeMode: 'stretch',
-      transform: [{ rotate: `${this.state.rotation.toString()}deg` }],
+      // transform: [{ rotate: `${this.state.rotation.toString()}deg` }],
     };
   };
 
@@ -582,82 +582,82 @@ class CropperPage extends Component<CropperPageProps, State> {
     });
   };
 
-  setCropBoxRotation = (rotation: number) => {
-    this.setState({ rotation });
-  };
+  // setCropBoxRotation = (rotation: number) => {
+  //   this.setState({ rotation });
+  // };
 
-  rotate90 = () => {
-    this.setCropBoxRotation((360 + (this.state.rotation - 90)) % 360);
-  };
+  // rotate90 = () => {
+  //   this.setCropBoxRotation((360 + (this.state.rotation - 90)) % 360);
+  // };
 
-  onRotate = () => {
-    const W_INT = this.W - 2 * this.props.BORDER_WIDTH;
-    const H_INT = this.H - 2 * this.props.BORDER_WIDTH;
-    let imageWidth = 0;
-    let imageHeight = 0;
-    let rotation = 0;
-    if (this.state.rotation % 180 === 90) {
-      imageWidth = this.props.imageWidth > 0 ? this.props.imageWidth : 1280; // 340
-      imageHeight = this.props.imageHeight > 0 ? this.props.imageHeight : 747; // 500
-      rotation = 0;
-    } else {
-      imageWidth = this.props.COMPONENT_WIDTH - this.state.LEFT_LIMIT - this.state.RIGHT_LIMIT;
-      imageHeight = this.props.COMPONENT_HEIGHT - this.state.TOP_LIMIT - this.state.BOTTOM_LIMIT;
-      rotation = 90;
-    }
-    const { TOP_LIMIT, LEFT_LIMIT, BOTTOM_LIMIT, RIGHT_LIMIT, DIFF } = getCropperLimits(
-      imageWidth,
-      imageHeight,
-      rotation,
-      W_INT,
-      H_INT,
-      this.W,
-      this.H,
-      this.props.BORDER_WIDTH,
-      Q,
-    );
-    this.rotate90();
-    this.setCropBoxLimits({ TOP_LIMIT, LEFT_LIMIT, BOTTOM_LIMIT, RIGHT_LIMIT });
-    const startPositionBeforeRotationX = this.state.leftPosition.x._value - this.state.LEFT_LIMIT + this.props.BORDER_WIDTH;
-    const startPositionBeforeRotationY = this.state.topPosition.y._value - this.state.TOP_LIMIT + this.props.BORDER_WIDTH;
-    const imageWidthBeforeRotation = this.props.COMPONENT_WIDTH - this.state.RIGHT_LIMIT - this.state.LEFT_LIMIT;
-    const imageHeightBeforeRotation = this.props.COMPONENT_HEIGHT - this.state.BOTTOM_LIMIT - this.state.TOP_LIMIT;
-    const rectangleWidthBeforeRotation = this.state.rightPosition.x._value - this.state.leftPosition.x._value - this.props.BORDER_WIDTH;
-    const rectangleHeightBeforeRotation = this.state.bottomPosition.y._value - this.state.topPosition.y._value - this.props.BORDER_WIDTH;
-    const imageWidthAfterRotation = this.props.COMPONENT_WIDTH - RIGHT_LIMIT - LEFT_LIMIT;
-    const imageHeightAfterRotation = this.props.COMPONENT_HEIGHT - BOTTOM_LIMIT - TOP_LIMIT;
-    const rectangleWidthAfterRotation = (imageWidthAfterRotation * rectangleHeightBeforeRotation) / imageHeightBeforeRotation;
-    const rectangleHeightAfterRotation = (imageHeightAfterRotation * rectangleWidthBeforeRotation) / imageWidthBeforeRotation;
-    const startPositionAfterRotationX = (startPositionBeforeRotationY * imageWidthAfterRotation) / imageHeightBeforeRotation;
-    const startPositionAfterRotationY =
-      ((imageWidthBeforeRotation - startPositionBeforeRotationX - rectangleWidthBeforeRotation) * imageHeightAfterRotation) /
-      imageWidthBeforeRotation;
+  // onRotate = () => {
+  //   const W_INT = this.W - 2 * this.props.BORDER_WIDTH;
+  //   const H_INT = this.H - 2 * this.props.BORDER_WIDTH;
+  //   let imageWidth = 0;
+  //   let imageHeight = 0;
+  //   let rotation = 0;
+  //   if (this.state.rotation % 180 === 90) {
+  //     imageWidth = this.props.imageWidth > 0 ? this.props.imageWidth : 1280; // 340
+  //     imageHeight = this.props.imageHeight > 0 ? this.props.imageHeight : 747; // 500
+  //     rotation = 0;
+  //   } else {
+  //     imageWidth = this.props.COMPONENT_WIDTH - this.state.LEFT_LIMIT - this.state.RIGHT_LIMIT;
+  //     imageHeight = this.props.COMPONENT_HEIGHT - this.state.TOP_LIMIT - this.state.BOTTOM_LIMIT;
+  //     rotation = 90;
+  //   }
+  //   const { TOP_LIMIT, LEFT_LIMIT, BOTTOM_LIMIT, RIGHT_LIMIT, DIFF } = getCropperLimits(
+  //     imageWidth,
+  //     imageHeight,
+  //     rotation,
+  //     W_INT,
+  //     H_INT,
+  //     this.W,
+  //     this.H,
+  //     this.props.BORDER_WIDTH,
+  //     Q,
+  //   );
+  //   this.rotate90();
+  //   this.setCropBoxLimits({ TOP_LIMIT, LEFT_LIMIT, BOTTOM_LIMIT, RIGHT_LIMIT });
+  //   const startPositionBeforeRotationX = this.state.leftPosition.x._value - this.state.LEFT_LIMIT + this.props.BORDER_WIDTH;
+  //   const startPositionBeforeRotationY = this.state.topPosition.y._value - this.state.TOP_LIMIT + this.props.BORDER_WIDTH;
+  //   const imageWidthBeforeRotation = this.props.COMPONENT_WIDTH - this.state.RIGHT_LIMIT - this.state.LEFT_LIMIT;
+  //   const imageHeightBeforeRotation = this.props.COMPONENT_HEIGHT - this.state.BOTTOM_LIMIT - this.state.TOP_LIMIT;
+  //   const rectangleWidthBeforeRotation = this.state.rightPosition.x._value - this.state.leftPosition.x._value - this.props.BORDER_WIDTH;
+  //   const rectangleHeightBeforeRotation = this.state.bottomPosition.y._value - this.state.topPosition.y._value - this.props.BORDER_WIDTH;
+  //   const imageWidthAfterRotation = this.props.COMPONENT_WIDTH - RIGHT_LIMIT - LEFT_LIMIT;
+  //   const imageHeightAfterRotation = this.props.COMPONENT_HEIGHT - BOTTOM_LIMIT - TOP_LIMIT;
+  //   const rectangleWidthAfterRotation = (imageWidthAfterRotation * rectangleHeightBeforeRotation) / imageHeightBeforeRotation;
+  //   const rectangleHeightAfterRotation = (imageHeightAfterRotation * rectangleWidthBeforeRotation) / imageWidthBeforeRotation;
+  //   const startPositionAfterRotationX = (startPositionBeforeRotationY * imageWidthAfterRotation) / imageHeightBeforeRotation;
+  //   const startPositionAfterRotationY =
+  //     ((imageWidthBeforeRotation - startPositionBeforeRotationX - rectangleWidthBeforeRotation) * imageHeightAfterRotation) /
+  //     imageWidthBeforeRotation;
 
-    this.state.topPosition.setValue({
-      x: LEFT_LIMIT + startPositionAfterRotationX - this.props.BORDER_WIDTH,
-      y: TOP_LIMIT + startPositionAfterRotationY - this.props.BORDER_WIDTH,
-    });
-    this.state.leftPosition.setValue({
-      x: LEFT_LIMIT + startPositionAfterRotationX - this.props.BORDER_WIDTH,
-      y: TOP_LIMIT + startPositionAfterRotationY - this.props.BORDER_WIDTH,
-    });
-    this.state.bottomPosition.setValue({
-      x: LEFT_LIMIT + startPositionAfterRotationX - this.props.BORDER_WIDTH,
-      y: TOP_LIMIT + startPositionAfterRotationY + rectangleHeightAfterRotation,
-    });
-    this.state.rightPosition.setValue({
-      x: LEFT_LIMIT + startPositionAfterRotationX + rectangleWidthAfterRotation,
-      y: TOP_LIMIT + startPositionAfterRotationY - this.props.BORDER_WIDTH - DIFF / 2,
-    });
-    // @ts-ignore
-    this.topOuter.setNativeProps({ style: { top: TOP_LIMIT, height: 0 } });
-    // @ts-ignore
-    this.leftOuter.setNativeProps({ style: { left: LEFT_LIMIT, width: 0 } });
-    // @ts-ignore
-    this.bottomOuter.setNativeProps({ style: { top: BOTTOM_LIMIT, height: 0 } });
-    // @ts-ignore
-    this.rightOuter.setNativeProps({ style: { top: TOP_LIMIT, height: 0 } });
-  };
+  //   this.state.topPosition.setValue({
+  //     x: LEFT_LIMIT + startPositionAfterRotationX - this.props.BORDER_WIDTH,
+  //     y: TOP_LIMIT + startPositionAfterRotationY - this.props.BORDER_WIDTH,
+  //   });
+  //   this.state.leftPosition.setValue({
+  //     x: LEFT_LIMIT + startPositionAfterRotationX - this.props.BORDER_WIDTH,
+  //     y: TOP_LIMIT + startPositionAfterRotationY - this.props.BORDER_WIDTH,
+  //   });
+  //   this.state.bottomPosition.setValue({
+  //     x: LEFT_LIMIT + startPositionAfterRotationX - this.props.BORDER_WIDTH,
+  //     y: TOP_LIMIT + startPositionAfterRotationY + rectangleHeightAfterRotation,
+  //   });
+  //   this.state.rightPosition.setValue({
+  //     x: LEFT_LIMIT + startPositionAfterRotationX + rectangleWidthAfterRotation,
+  //     y: TOP_LIMIT + startPositionAfterRotationY - this.props.BORDER_WIDTH - DIFF / 2,
+  //   });
+  //   // @ts-ignore
+  //   this.topOuter.setNativeProps({ style: { top: TOP_LIMIT, height: 0 } });
+  //   // @ts-ignore
+  //   this.leftOuter.setNativeProps({ style: { left: LEFT_LIMIT, width: 0 } });
+  //   // @ts-ignore
+  //   this.bottomOuter.setNativeProps({ style: { top: BOTTOM_LIMIT, height: 0 } });
+  //   // @ts-ignore
+  //   this.rightOuter.setNativeProps({ style: { top: TOP_LIMIT, height: 0 } });
+  // };
 
   onDone = async() => {
     if (this.isRectangleMoving) {
@@ -675,11 +675,11 @@ class CropperPage extends Component<CropperPageProps, State> {
     let imageHeight = this.props.imageHeight > 0 ? this.props.imageHeight : 747; // 500
     let outputType = this.props.OUTPUT_FORMAT == 'JPEG' ? ImageManipulator.SaveFormat.JPEG : ImageManipulator.SaveFormat.PNG;
     let quality = this.props.COMPRESS_QUALITY > 1 ? 1 : this.props.COMPRESS_QUALITY;
-    if (this.state.rotation % 180 === 90) {
-      const pivot = imageWidth;
-      imageWidth = imageHeight;
-      imageHeight = pivot;
-    }
+    // if (this.state.rotation % 180 === 90) {
+    //   const pivot = imageWidth;
+    //   imageWidth = imageHeight;
+    //   imageHeight = pivot;
+    // }
     width = (width * imageWidth) / IMAGE_W;
     height = (height * imageHeight) / IMAGE_H;
     x = (x * imageWidth) / IMAGE_W;
@@ -691,6 +691,7 @@ class CropperPage extends Component<CropperPageProps, State> {
     } as ImageCropData;
     await ImageManipulator.manipulateAsync(   //expo package
       this.props.imageUri, [
+      // { rotate: this.state.rotation},
       { crop: {
         originX: cropData.offset.x,
         originY: cropData.offset.y,
@@ -729,7 +730,7 @@ class CropperPage extends Component<CropperPageProps, State> {
         getRectangleStyle={this.getRectangleStyle}
         getImageStyle={this.getImageStyle}
         onDone={this.onDone}
-        onRotate={this.onRotate}
+        // onRotate={this.onRotate}
         onCancel={this.onCancel}
         topOuterPanResponder={this.state.topOuterPanResponder}
         leftOuterPanResponder={this.state.leftOuterPanResponder}

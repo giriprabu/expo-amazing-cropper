@@ -105,7 +105,7 @@ function getCropperLimitsIfVertically(
 function getCropperLimits(
   imageWidth: number,
   imageHeight: number,
-  rotation: number,
+  // rotation: number,
   W_INT: number,
   H_INT: number,
   W: number,
@@ -113,10 +113,11 @@ function getCropperLimits(
   BW: number,
   Q: number,
 ) {
-  if (rotation % 180 === 0) {
+  // if (rotation % 180 === 0) {
     return getCropperLimitsIfHorizontally(imageWidth, imageHeight, W_INT, H_INT, W, H, BW, Q);
-  }
-  return getCropperLimitsIfVertically(imageWidth, imageHeight, W_INT, H_INT, W, H, BW, Q);
+  // }
+  // commented out code for getting limit when photo is in vertical position after rotation
+  // return getCropperLimitsIfVertically(imageWidth, imageHeight, W_INT, H_INT, W, H, BW, Q);
 }
 
 export { getCropperLimits };

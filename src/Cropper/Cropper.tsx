@@ -20,7 +20,7 @@ interface CropperProps {
   getRectangleStyle: () => object;
   getImageStyle: () => object;
   onDone: () => void;
-  onRotate: () => void;
+  // onRotate: () => void;
   onCancel: () => void;
   topOuterPanResponder: PanResponderInstance;
   leftOuterPanResponder: PanResponderInstance;
@@ -56,7 +56,7 @@ const Cropper: React.FC<CropperProps> = props => {
       <View style={styles.footerContainer}>
         {React.cloneElement(props.footerComponent, {
           onDone: props.onDone,
-          onRotate: props.onRotate,
+          // onRotate: props.onRotate,
           onCancel: props.onCancel,
         })}
       </View>

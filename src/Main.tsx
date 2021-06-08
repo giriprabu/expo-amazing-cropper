@@ -15,7 +15,7 @@ export type ExpoAmazingCropperProps = {
   LEFT_VALUE?: number;
   BOTTOM_VALUE?: number;
   RIGHT_VALUE?: number;
-  initialRotation?: number;
+  // initialRotation?: number;
   NOT_SELECTED_AREA_OPACITY?: number;
   BORDER_WIDTH?: number;
   COMPONENT_WIDTH?: number;
@@ -36,7 +36,7 @@ const defaultProps = {
   LEFT_VALUE: 0,
   BOTTOM_VALUE: 0,
   RIGHT_VALUE: 0,
-  initialRotation: 0,
+  // initialRotation: 0,
   NOT_SELECTED_AREA_OPACITY: 0.5,
   BORDER_WIDTH: 50,
   COMPONENT_WIDTH: SCREEN_WIDTH,
@@ -62,7 +62,7 @@ class Main extends Component<ExpoAmazingCropperProps> {
         LEFT_VALUE={this.props.LEFT_VALUE}
         BOTTOM_VALUE={this.props.BOTTOM_VALUE}
         RIGHT_VALUE={this.props.RIGHT_VALUE}
-        initialRotation={this.props.initialRotation}
+        // initialRotation={this.props.initialRotation}
         NOT_SELECTED_AREA_OPACITY={this.props.NOT_SELECTED_AREA_OPACITY}
         BORDER_WIDTH={this.props.BORDER_WIDTH}
         COMPONENT_WIDTH={this.props.COMPONENT_WIDTH}
